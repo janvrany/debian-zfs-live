@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+release=$(head -n 1 /etc/apt/sources.list | cut -d ' ' -f 3)
+
+echo "deb https://deb.debian.org/debian ${release}-backports main contrib" > /etc/apt/sources.list.d/${release}-backports.list
+echo "deb-src https://deb.debian.org/debian ${release}-backports main contrib" >> /etc/apt/sources.list.d/${release}-backports.list
+
+apt update
+apt -y -t ${release}-backports install zfs-dkms
+
+echo zfs >> /etc/modules
