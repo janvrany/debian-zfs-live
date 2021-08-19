@@ -7,3 +7,4 @@ openssh-server
 openssh-sftp-server
 apt-transport-https
 build-essential
+arch-install-scripts
