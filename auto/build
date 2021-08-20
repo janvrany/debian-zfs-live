@@ -3,3 +3,26 @@
 set -e
 
 lb build noauto "${@}" 2>&1 | tee build.log
+
+
+# Rename resulting image files so the name contain
+# both kernel version and zfs version
+
+kernel_ver=$(grep 'linux-image-[4-9]\.' chroot.packages.live | cut -f 2)
+zfs_ver=$(grep zfs-dkms chroot.packages.live | cut -f 2)
+
+
+echo "Kernel version: ${kernel_ver}"
+echo "   ZFS version: ${zfs_ver}"
+
+. config/common
+
+echo
+echo "Renaming image files..."
+
+for old in ${LB_IMAGE_NAME}*; do
+	new=$(echo $old | sed -e "s/zfs/kernel-${kernel_ver}-zfs-${zfs_ver}/g")
+	mv "$old" "$new"
+done
+
+echo "...done"
