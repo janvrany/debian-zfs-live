@@ -8,3 +8,6 @@ openssh-sftp-server
 apt-transport-https
 build-essential
 arch-install-scripts
+smartmontools
+fdisk
+debootstrap
