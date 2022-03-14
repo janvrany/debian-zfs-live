@@ -11,7 +11,7 @@ config/chroot
 config/common
 config/source
 config/hooks/normal/0*
-config/hooks/libe/0*
+config/hooks/live/0*
 
 *.contents
 *.files
