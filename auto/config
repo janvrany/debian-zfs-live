@@ -2,15 +2,22 @@
 
 set -e
 
-release=buster
+# Please note, that ZFS is installed by
+#
+#    config/hooks/live/9999-install-zfs.hook.chroot
+#
+# so to specify what ZFS to install, you should go
+# and check it there.
+
+release=bullseye
 date=$(date +%Y-%m)
 
 lb config noauto \
 	--distribution "${release}" \
 	--architectures=amd64 \
 	--binary-images iso-hybrid \
-	--iso-volume "Debian ${release^} ZFS Test / Rescue" \
-    --image-name "debian-${release}-zfs-${date}" \
+	--iso-volume "Debian ${release^} w/ ZFS" \
+	--image-name "debian-${release}-zfs-${date}" \
  	--archive-areas "main contrib" \
- 	--linux-packages "linux-image linux-headers"
+	--linux-packages "linux-image linux-headers" \
 	"${@}"
