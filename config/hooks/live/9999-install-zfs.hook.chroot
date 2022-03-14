@@ -3,11 +3,19 @@
 set -e
 
 release=$(head -n 1 /etc/apt/sources.list | cut -d ' ' -f 3)
+backports=no
 
-echo "deb https://deb.debian.org/debian ${release}-backports main contrib" > /etc/apt/sources.list.d/${release}-backports.list
-echo "deb-src https://deb.debian.org/debian ${release}-backports main contrib" >> /etc/apt/sources.list.d/${release}-backports.list
+if [ "$backports" == "yes" ]; then
+    echo "deb https://deb.debian.org/debian ${release}-backports main contrib" > /etc/apt/sources.list.d/${release}-backports.list
+    echo "deb-src https://deb.debian.org/debian ${release}-backports main contrib" >> /etc/apt/sources.list.d/${release}-backports.list
+fi
 
 apt update
-apt -y -t ${release}-backports install zfs-dkms
+
+if [ "$backports" == "yes" ]; then
+    apt -y -t ${release}-backports install zfs-dkms
+else
+    apt -y install zfs-dkms
+fi
 
 echo zfs >> /etc/modules
