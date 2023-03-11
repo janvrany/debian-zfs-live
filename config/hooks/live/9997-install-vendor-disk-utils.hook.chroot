@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -ex
+
+dpkg -i /root/*.deb
+rm /root/*.deb
