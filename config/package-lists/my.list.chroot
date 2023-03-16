@@ -13,4 +13,6 @@ fdisk
 debootstrap
 coreutils
 tmux
+lshw
+pciutils
 mc
