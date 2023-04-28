@@ -11,3 +11,6 @@ arch-install-scripts
 smartmontools
 fdisk
 debootstrap
+coreutils
+tmux
+mc
