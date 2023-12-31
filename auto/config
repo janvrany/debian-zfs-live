@@ -18,6 +18,6 @@ lb config noauto \
 	--binary-images iso-hybrid \
 	--iso-volume "Debian ${release^} w/ ZFS" \
 	--image-name "debian-${release}-zfs-${date}" \
- 	--archive-areas "main contrib" \
+	--archive-areas "main contrib non-free" \
 	--linux-packages "linux-image linux-headers" \
 	"${@}"
