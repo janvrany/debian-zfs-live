@@ -9,7 +9,7 @@ set -e
 # so to specify what ZFS to install, you should go
 # and check it there.
 
-release=bullseye
+release=bookworm
 date=$(date +%Y-%m)
 
 lb config noauto \
