@@ -20,4 +20,5 @@ lb config noauto \
 	--image-name "debian-${release}-zfs-${date}" \
 	--archive-areas "main contrib non-free" \
 	--linux-packages "linux-image linux-headers" \
+	--bootappend-live "boot=live components intremap=off intel_iommu=off" \
 	"${@}"
